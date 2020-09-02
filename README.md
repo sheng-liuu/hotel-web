@@ -1,5 +1,7 @@
 
 ![image](https://github.com/sheng-liuu/hotel-web/blob/master/screencapture-localhost-3000-1599052790995.png)
+![image](https://github.com/sheng-liuu/hotel-web/blob/master/screencapture-localhost-3000-rooms-1599052860765.png)
+![image](https://github.com/sheng-liuu/hotel-web/blob/master/screencapture-localhost-3000-rooms-single-basic-1599052881934.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

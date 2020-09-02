@@ -10,6 +10,7 @@
     --mainBlack: #222;
     --mainGrey: #ececec;
     --darkGrey: #cfcfcf;
+    /* linear - specifies a transition effect with the same speed from start to end */
     --mainTransition: all 0.3s linear;
     --mainSpacing: 3px;
     --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
@@ -131,7 +132,6 @@
   .nav-links a:hover {
     color: var(--primaryColor);
   }
-  
   .show-nav {
     height: 100px;
   }
@@ -158,10 +158,13 @@
   /* Hero */
   .defaultHero,
   .roomsHero {
+    /*vh heigth of windowview vw weidth; less 66px*/
     min-height: calc(100vh - 66px);
     background: url("./images/defaultBcg.jpeg") center/cover no-repeat;
     display: flex;
+    /*vertical*/
     align-items: center;
+    /*horizontal*/
     justify-content: center;
   }
   .roomsHero {
@@ -280,6 +283,8 @@
     width: 80vw;
     margin: 0 auto;
     display: grid;
+    /* auto-fit ocupy a entire line, auto-fill just the needed space 
+    minmax = minmimum width*/
     grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     grid-row-gap: 2rem;
     grid-column-gap: 40px;
@@ -297,9 +302,13 @@
     }
   }
   /* end pf featured rooms */
-  /* room */
+
+
+  /* room Room.js*/
   .room {
     box-shadow: var(--lightShadow);
+    /* transite lightshadow to darkshadow, will be slower and more beautiful
+    not incluid their container*/
     transition: var(--mainTransition);
   }
   .room:hover {
@@ -307,6 +316,7 @@
   }
   
   .img-container {
+    /* if not we cannot see the price tag -- price-top */
     position: relative;
   }
   .img-container img {
@@ -315,6 +325,7 @@
     transition: var(--mainTransition);
   }
   .price-top {
+    /* img-container is relative, absolute on relative*/
     position: absolute;
     top: 0;
     left: 0;
@@ -323,7 +334,7 @@
     padding: 0.3rem 0.6rem 0.5rem;
     border-bottom-right-radius: 1rem;
     font-size: 0.5rem;
-    text-align: center;
+    /*text-align: center;*/
     transition: var(--mainTransition);
   }
   .price-top h6 {
@@ -337,7 +348,7 @@
     top: 50%;
     left: 50%;
     transform: scale(0);
-    transition: all 0.3s linear;
+    transition: var(--mainTransition);
   }
   .img-container:hover {
     background: rgba(0, 0, 0, 0.8);
@@ -359,7 +370,9 @@
     font-weight: 700;
     letter-spacing: var(--mainSpacing);
   }
-  /* end of room  */
+  /* end of room  Room.js*/
+  
+
   /* single room*/
   
   .single-room {

@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import items from './data'
 
+// create a context
 const RoomContext = React.createContext();
 
-//
+// Context is designed to share data that can be considered “global” for a tree of React components
 class RoomProvider extends Component {
     state = {
         rooms: [],
@@ -20,21 +21,22 @@ class RoomProvider extends Component {
         breakfast: false,
         pets: false
     };
-    //getData
+
+    //getData 
     componentDidMount() {
-        let rooms = this.formatData(items);
+        let rooms = this.formatData(items); // data.js
         let featuredRooms = rooms.filter(room => room.featured === true);
         let maxPrice = Math.max(...rooms.map(item => item.price));
         let maxSize = Math.max(...rooms.map(item => item.size));
 
         this.setState({
-            rooms, 
-            featuredRooms,
+            rooms: rooms, 
+            featuredRooms: featuredRooms,
             sortedRooms: rooms, 
             loading: false,
             price: maxPrice,
-            maxPrice,
-            maxSize
+            maxPrice: maxPrice,
+            maxSize: maxSize
         });
     }
 
@@ -44,6 +46,7 @@ class RoomProvider extends Component {
             let images = item.fields.images.map(image => image.fields.file.url);
 
             let room = { ...item.fields, images, id}
+            console.log(item);
             return room;
         });
         return tempItems;

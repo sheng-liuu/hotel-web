@@ -11,11 +11,20 @@ export default class SingleRoom extends Component {
     super(props);
     this.state ={
       slug: this.props.match.params.slug,
-      defaultBcg
+      defaultBcg,
+      imgPc: defaultBcg
     };
   }
 
   static contextType = RoomContext;
+
+  setImg = (img) => {
+      this.setState({
+        imgPc: img
+      }, () => {console.log(this.state.imgPc)})
+    }
+
+ 
 
   render() {
     const {getRoom} = this.context;
@@ -27,10 +36,11 @@ export default class SingleRoom extends Component {
       </div>
     }
     const {name,description,capacity,size,price,extras,breakfast,pets,images} = room;
-    const [mainImg,...defaultImg] = images
+    const [mainImg,...defaultImg] = images   
+
     return (
       <>
-      <StyledHero img={images[0] || this.state.defaultBcg}>
+      <StyledHero img={this.state.imgPc || this.state.defaultBcg}>
         <Banner title={`${name} room`}>
           <Link to='/rooms' className="btn-primary">back to rooms</Link>
         </Banner>
@@ -38,7 +48,9 @@ export default class SingleRoom extends Component {
       <section className="single-room">
         <div className="single-room-images">
           {defaultImg.map((item, index) => {
-            return <img key={index} src={item} alt={name} />;
+            return (
+              <img key={index} src={item} alt={name} onClick={() => this.setImg(item)}/>
+            )
           })}
         </div>
         <div className="single-room-info">
